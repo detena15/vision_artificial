@@ -1,0 +1,21 @@
+You need to make sure your source image is entirely inside the destination image.
+
+In other words, make sure the points:
+
+    ( center.x + src.width / 2, center.y + src.height / 2 ) and 
+    ( center.x - src.width / 2, center.y - src.height / 2 ) 
+
+are inside the destination image.
+
+( i.e. within the rectangle ( 0, 0, dst.width, dst.height).
+
+
+---ERRORES---
+
+File "main.py", line 22, in <module>
+    output = cv2.seamlessClone(src, dst, src_mask, center, cv2.NORMAL_CLONE)
+cv2.error: OpenCV(4.5.1) /tmp/pip-req-build-ms668fyv/opencv/modules/core/src/matrix.cpp:810: error: 
+(-215:Assertion failed) 0 <= roi.x && 0 <= roi.width && roi.x + roi.width <= m.cols && 0 <= roi.y && 0 <= roi.height && 
+roi.y + roi.height <= m.rows in function 'Mat'
+
+Esto es porque la imagen que copio se sale de la imagen destino.
